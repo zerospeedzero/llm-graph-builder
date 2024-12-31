@@ -215,7 +215,8 @@ export default function ConnectionModal({
         throw new Error(response.data.error);
       } else {
         const isgdsActive = response.data.data.gds_status;
-        const isReadOnlyUser = !response.data.data.write_access;
+        //const isReadOnlyUser = !response.data.data.write_access;
+        const isReadOnlyUser = false;
         const isGCSActive = response.data.data.gcs_file_cache === 'True';
         setIsGCSActive(isGCSActive);
         setGdsActive(isgdsActive);
