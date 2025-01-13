@@ -49,9 +49,11 @@ COPY --from=builder /app /code
 
 # Set environment variables
 ENV PORT=8000
+ENV WORKERS=2
+ENV THREADS=8
 
 # Expose the application port
 EXPOSE 8000
 
 # Command to run the application
-CMD ["gunicorn", "score:app", "--workers", "8", "--threads", "8", "--worker-class", "uvicorn.workers.UvicornWorker", "--bind", "0.0.0.0:8000", "--timeout", "300"]
+CMD ["gunicorn", "score:app", "--workers", "${WORKERS}", "--threads", "${THREADS}", "--worker-class", "uvicorn.workers.UvicornWorker", "--bind", "0.0.0.0:8000", "--timeout", "300"]
