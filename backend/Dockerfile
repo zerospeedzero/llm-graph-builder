@@ -56,4 +56,4 @@ ENV THREADS=8
 EXPOSE 8000
 
 # Command to run the application
-CMD ["gunicorn", "score:app", "--workers", ${WORKERS}, "--threads", ${THREADS}, "--worker-class", "uvicorn.workers.UvicornWorker", "--bind", "0.0.0.0:8000", "--timeout", "300"]
+CMD ["gunicorn", "score:app", "--workers", "2", "--threads", "8", "--worker-class", "uvicorn.workers.UvicornWorker", "--bind", "0.0.0.0:8000", "--timeout", "300"]
