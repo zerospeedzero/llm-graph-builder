@@ -1,7 +1,7 @@
 # Step 1: Build the React application
 FROM node:20 AS build
 
-# ARG VITE_BACKEND_API_URL="http://ip-172-31-30-152.ca-west-1.compute.internal:8000"
+ARG VITE_BACKEND_API_URL="http://40.176.113.236:8000"
 ARG VITE_REACT_APP_SOURCES=""
 ARG VITE_LLM_MODELS=""
 ARG VITE_GOOGLE_CLIENT_ID=""
