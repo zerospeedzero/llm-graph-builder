@@ -15,7 +15,7 @@ ARG VITE_BATCH_SIZE=2
 ARG VITE_LLM_MODELS_PROD="openai_gpt_4o,openai_gpt_4o_mini,diffbot,gemini_1.5_flash"
 ARG VITE_AUTH0_CLIENT_ID=""
 ARG VITE_AUTH0_DOMAIN=""
-ARG VITE_SKIP_AUTH="false"
+ARG VITE_SKIP_AUTH="true"
 
 WORKDIR /app
 COPY package.json yarn.lock ./
