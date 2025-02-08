@@ -23,11 +23,26 @@ import gcslogo from '../assets/images/gcs.webp';
 import { chatModeLables, EXPIRATION_DAYS } from './Constants';
 
 // Get the Url
+// export const url = () => {
+//   let url = window.location.href.replace('5173', '8000');
+//   if (process.env.VITE_BACKEND_API_URL) {
+//     url = process.env.VITE_BACKEND_API_URL;
+//   }
+//   return !url || !url.match('/$') ? url : url.substring(0, url.length - 1);
+// };
+// Added by George to make the backend url hostname part as the same as the frontend url hostname part
 export const url = () => {
-  let url = window.location.href.replace('5173', '8000');
-  if (process.env.VITE_BACKEND_API_URL) {
-    url = process.env.VITE_BACKEND_API_URL;
-  }
+  // Get the hostname and protocol from current URL
+  const { protocol, hostname } = window.location;
+  // Construct backend URL with port 8000
+  let url = `${protocol}//${hostname}:8000`;
+  
+  // Keep the existing environment variable check as fallback
+  // if (process.env.VITE_BACKEND_API_URL) {
+  //   url = process.env.VITE_BACKEND_API_URL;
+  // }
+  
+  // Remove trailing slash if present
   return !url || !url.match('/$') ? url : url.substring(0, url.length - 1);
 };
 
