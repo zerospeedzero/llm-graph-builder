@@ -15,14 +15,7 @@ services:
       - LANGCHAIN_TRACING_V2=${LANGCHAIN_TRACING_V2-}
       - LANGCHAIN_PROJECT=${LANGCHAIN_PROJECT-}
       - LANGCHAIN_API_KEY=${LANGCHAIN_API_KEY-}
-      - KNN_MIN_SCORE=${KNN_MIN_SCORE-0.94}
       - IS_EMBEDDING=${IS_EMBEDDING-true}
-      - GEMINI_ENABLED=${GEMINI_ENABLED-False}
-      - GCP_LOG_METRICS_ENABLED=${GCP_LOG_METRICS_ENABLED-False}
-      - UPDATE_GRAPH_CHUNKS_PROCESSED=${UPDATE_GRAPH_CHUNKS_PROCESSED-20}
-      - NUMBER_OF_CHUNKS_TO_COMBINE=${NUMBER_OF_CHUNKS_TO_COMBINE-6}
-      - ENTITY_EMBEDDING=${ENTITY_EMBEDDING-False}
-      - GCS_FILE_CACHE=${GCS_FILE_CACHE-False}
       - LLM_MODEL_CONFIG_ollama_llama3=${LLM_MODEL_CONFIG_ollama_llama3-}
     env_file:
       - ./.beenv
@@ -41,7 +34,6 @@ services:
     depends_on:
       - backend
     environment:
-      - VITE_REACT_APP_SOURCES=${VITE_REACT_APP_SOURCES-local,wiki,s3}
       - VITE_GOOGLE_CLIENT_ID=${VITE_GOOGLE_CLIENT_ID-}
       - VITE_BLOOM_URL=${VITE_BLOOM_URL-https://workspace-preview.neo4j.io/workspace/explore?connectURL={CONNECT_URL}&search=Show+me+a+graph&featureGenAISuggestions=true&featureGenAISuggestionsInternal=true}
       - VITE_TIME_PER_PAGE=${VITE_TIME_PER_PAGE-50}
