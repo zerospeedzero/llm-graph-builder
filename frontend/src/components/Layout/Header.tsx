@@ -3,15 +3,16 @@ import Neo4jLogoColor from '../../logo-color.svg';
 import {
   MoonIconOutline,
   SunIconOutline,
-  CodeBracketSquareIconOutline,
-  InformationCircleIconOutline,
-  ArrowTopRightOnSquareIconOutline,
+  // CodeBracketSquareIconOutline,
+  // InformationCircleIconOutline,
+  // ArrowTopRightOnSquareIconOutline,
   TrashIconOutline,
   ArrowLeftIconOutline,
   ArrowDownTrayIconOutline,
 } from '@neo4j-ndl/react/icons';
 import { Button, TextLink, Typography } from '@neo4j-ndl/react';
-import { Dispatch, memo, SetStateAction, useCallback, useContext, useRef, useState } from 'react';
+// import { Dispatch, memo, SetStateAction, useCallback, useContext, useRef, useState } from 'react';
+import { Dispatch, memo, SetStateAction,  useContext, useRef, useState } from 'react';
 import { IconButtonWithToolTip } from '../UI/IconButtonToolTip';
 import { buttonCaptions, SKIP_AUTH, tooltips } from '../../utils/Constants';
 import { ThemeWrapperContext } from '../../context/ThemeWrapper';
@@ -35,33 +36,33 @@ const Header: React.FC<HeaderProp> = ({ chatOnly, deleteOnClick, setOpenConnecti
   const { colorMode, toggleColorMode } = useContext(ThemeWrapperContext);
   const navigate = useNavigate();
   const { messages } = useMessageContext();
-  const handleURLClick = useCallback((url: string) => {
-    window.open(url, '_blank');
-  }, []);
+  // const handleURLClick = useCallback((url: string) => {
+  //   window.open(url, '_blank');
+  // }, []);
   const downloadLinkRef = useRef<HTMLAnchorElement>(null);
   const { connectionStatus } = useCredentials();
   const chatAnchor = useRef<HTMLDivElement>(null);
   const [showChatModeOption, setShowChatModeOption] = useState<boolean>(false);
-  const openChatPopout = useCallback(() => {
-    let session = localStorage.getItem('neo4j.connection');
-    const isLoading = getIsLoading(messages);
-    if (session) {
-      const neo4jConnection = JSON.parse(session);
-      const { uri } = neo4jConnection;
-      const userName = neo4jConnection.user;
-      const { password } = neo4jConnection;
-      const { database } = neo4jConnection;
-      const [, port] = uri.split(':');
-      const encodedPassword = btoa(password);
-      const chatUrl = `/chat-only?uri=${encodeURIComponent(
-        uri
-      )}&user=${userName}&password=${encodedPassword}&database=${database}&port=${port}&connectionStatus=${connectionStatus}`;
-      navigate(chatUrl, { state: { messages, isLoading } });
-    } else {
-      const chatUrl = `/chat-only?openModal=true`;
-      window.open(chatUrl, '_blank');
-    }
-  }, [messages]);
+  // const openChatPopout = useCallback(() => {
+  //   let session = localStorage.getItem('neo4j.connection');
+  //   const isLoading = getIsLoading(messages);
+  //   if (session) {
+  //     const neo4jConnection = JSON.parse(session);
+  //     const { uri } = neo4jConnection;
+  //     const userName = neo4jConnection.user;
+  //     const { password } = neo4jConnection;
+  //     const { database } = neo4jConnection;
+  //     const [, port] = uri.split(':');
+  //     const encodedPassword = btoa(password);
+  //     const chatUrl = `/chat-only?uri=${encodeURIComponent(
+  //       uri
+  //     )}&user=${userName}&password=${encodedPassword}&database=${database}&port=${port}&connectionStatus=${connectionStatus}`;
+  //     navigate(chatUrl, { state: { messages, isLoading } });
+  //   } else {
+  //     const chatUrl = `/chat-only?openModal=true`;
+  //     window.open(chatUrl, '_blank');
+  //   }
+  // }, [messages]);
 
   const onBackButtonClick = () => {
     navigate('/', { state: messages });

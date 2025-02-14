@@ -4,7 +4,8 @@ import { Button, Typography, Flex, StatusIndicator, useMediaQuery } from '@neo4j
 import { useCredentials } from '../context/UserCredentials';
 import { useFileContext } from '../context/UsersFiles';
 import { extractAPI } from '../utils/FileAPI';
-import { BannerAlertProps, ContentProps, CustomFile, OptionType, chunkdata, FileTableHandle } from '../types';
+// import { BannerAlertProps, ContentProps, CustomFile, OptionType, chunkdata, FileTableHandle } from '../types';
+import { BannerAlertProps, ContentProps, CustomFile, chunkdata, FileTableHandle } from '../types';
 import deleteAPI from '../services/DeleteFiles';
 import { postProcessing } from '../services/PostProcessing';
 import { triggerStatusUpdateAPI } from '../services/ServerSideStatusUpdateAPI';
@@ -14,12 +15,12 @@ import {
   buttonCaptions,
   chatModeLables,
   largeFileSize,
-  llms,
+  // llms,
   RETRY_OPIONS,
   tooltips,
 } from '../utils/Constants';
 import ButtonWithToolTip from './UI/ButtonWithToolTip';
-import DropdownComponent from './Dropdown';
+// import DropdownComponent from './Dropdown';
 import GraphViewModal from './Graph/GraphViewModal';
 import { lazy } from 'react';
 import FallBackDialog from './UI/FallBackDialog';
@@ -78,7 +79,7 @@ const Content: React.FC<ContentProps> = ({
   const {
     filesData,
     setFilesData,
-    setModel,
+    // setModel,
     selectedNodes,
     selectedRels,
     setSelectedNodes,
@@ -89,7 +90,7 @@ const Content: React.FC<ContentProps> = ({
     processedCount,
     setProcessedCount,
     setchatModes,
-    model,
+    // model,
     additionalInstructions,
     setAdditionalInstructions,
   } = useFileContext();
@@ -194,22 +195,22 @@ const Content: React.FC<ContentProps> = ({
     afterFirstRender = true;
   }, [queue.items.length, userCredentials]);
 
-  const handleDropdownChange = (selectedOption: OptionType | null | void) => {
-    if (selectedOption?.value) {
-      setModel(selectedOption?.value);
-    }
-    setFilesData((prevfiles) => {
-      return prevfiles.map((curfile) => {
-        return {
-          ...curfile,
-          model:
-            curfile.status === 'New' || curfile.status === 'Ready to Reprocess'
-              ? selectedOption?.value ?? ''
-              : curfile.model,
-        };
-      });
-    });
-  };
+  // const handleDropdownChange = (selectedOption: OptionType | null | void) => {
+  //   if (selectedOption?.value) {
+  //     setModel(selectedOption?.value);
+  //   }
+  //   setFilesData((prevfiles) => {
+  //     return prevfiles.map((curfile) => {
+  //       return {
+  //         ...curfile,
+  //         model:
+  //           curfile.status === 'New' || curfile.status === 'Ready to Reprocess'
+  //             ? selectedOption?.value ?? ''
+  //             : curfile.model,
+  //       };
+  //     });
+  //   });
+  // };
   const getChunks = async (name: string, pageNo: number) => {
     toggleChunksLoading();
     const response = await getChunkText(name, pageNo);
@@ -529,15 +530,15 @@ const Content: React.FC<ContentProps> = ({
     }
   };
 
-  const handleOpenGraphClick = () => {
-    const bloomUrl = process.env.VITE_BLOOM_URL;
-    const uriCoded = userCredentials?.uri.replace(/:\d+$/, '');
-    const connectURL = `${uriCoded?.split('//')[0]}//${userCredentials?.userName}@${uriCoded?.split('//')[1]}:${userCredentials?.port ?? '7687'
-      }`;
-    const encodedURL = encodeURIComponent(connectURL);
-    const replacedUrl = bloomUrl?.replace('{CONNECT_URL}', encodedURL);
-    window.open(replacedUrl, '_blank');
-  };
+  // const handleOpenGraphClick = () => {
+  //   const bloomUrl = process.env.VITE_BLOOM_URL;
+  //   const uriCoded = userCredentials?.uri.replace(/:\d+$/, '');
+  //   const connectURL = `${uriCoded?.split('//')[0]}//${userCredentials?.userName}@${uriCoded?.split('//')[1]}:${userCredentials?.port ?? '7687'
+  //     }`;
+  //   const encodedURL = encodeURIComponent(connectURL);
+  //   const replacedUrl = bloomUrl?.replace('{CONNECT_URL}', encodedURL);
+  //   window.open(replacedUrl, '_blank');
+  // };
 
   const handleGraphView = () => {
     setOpenGraphView(true);
