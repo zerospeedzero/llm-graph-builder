@@ -882,7 +882,7 @@ const Content: React.FC<ContentProps> = ({
             </Typography>
           </div>
           <div>
-            <ButtonWithToolTip
+            {/* <ButtonWithToolTip
               placement='top'
               text='Enhance graph quality'
               label='Graph Enhancemnet Settings'
@@ -892,7 +892,7 @@ const Content: React.FC<ContentProps> = ({
               size={isTablet ? 'small' : 'medium'}
             >
               Graph Enhancement
-            </ButtonWithToolTip>
+            </ButtonWithToolTip> */}
             {!connectionStatus ? (
               <Button
                 size={isTablet ? 'small' : 'medium'}
@@ -944,14 +944,14 @@ const Content: React.FC<ContentProps> = ({
           flexDirection={isTablet ? 'column' : 'row'}
         >
           <div>
-            <DropdownComponent
+            {/* <DropdownComponent
               onSelect={handleDropdownChange}
               options={llms ?? ['']}
               placeholder='Select LLM Model'
               defaultValue={model}
               view='ContentView'
               isDisabled={false}
-            />
+            /> */}
           </div>
           <Flex flexDirection='row' gap='4' className='self-end mb-2.5' flexWrap='wrap'>
             <ButtonWithToolTip
@@ -977,7 +977,7 @@ const Content: React.FC<ContentProps> = ({
             >
               {buttonCaptions.showPreviewGraph} {selectedfileslength && completedfileNo ? `(${completedfileNo})` : ''}
             </ButtonWithToolTip>
-            <ButtonWithToolTip
+            {/* <ButtonWithToolTip
               text={tooltips.bloomGraph}
               placement='top'
               onClick={handleOpenGraphClick}
@@ -987,7 +987,7 @@ const Content: React.FC<ContentProps> = ({
               size={isTablet ? 'small' : 'medium'}
             >
               {buttonCaptions.exploreGraphWithBloom}
-            </ButtonWithToolTip>
+            </ButtonWithToolTip> */}
             <ButtonWithToolTip
               text={
                 !selectedfileslength ? tooltips.deleteFile : `${selectedfileslength} ${tooltips.deleteSelectedFiles}`

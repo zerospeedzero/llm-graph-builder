@@ -95,7 +95,7 @@ const Header: React.FC<HeaderProp> = ({ chatOnly, deleteOnClick, setOpenConnecti
                   className='inline-flex gap-x-1'
                   style={{ display: 'flex', flexGrow: 0, alignItems: 'center', gap: '4px' }}
                 >
-                  <IconButtonWithToolTip
+                  {/* <IconButtonWithToolTip
                     text={tooltips.documentation}
                     onClick={() => handleURLClick('https://neo4j.com/labs/genai-ecosystem/llm-graph-builder')}
                     size='large'
@@ -142,7 +142,7 @@ const Header: React.FC<HeaderProp> = ({ chatOnly, deleteOnClick, setOpenConnecti
                     disabled={getIsLoading(messages)}
                   >
                     <ArrowTopRightOnSquareIconOutline />
-                  </IconButtonWithToolTip>
+                  </IconButtonWithToolTip> */}
                   {!SKIP_AUTH && <Profile />}
                 </div>
               </div>
